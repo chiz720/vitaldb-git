@@ -80,13 +80,13 @@ parts:
       # ----------------------------------------------------------
       # Chapter 6 — Hypothesis Testing
       # ----------------------------------------------------------
-      - file: notebooks/part2_inference/ch06_hypothesis_testing     # [PLANNED]
+      - file: notebooks/part2_inference/ch06_hypothesis_testing     # [EXISTS]
         title: "Chapter 6 — Hypothesis Testing"
 
       # ----------------------------------------------------------
       # Chapter 7 — Confidence Intervals and Clinical Significance
       # ----------------------------------------------------------
-      - file: notebooks/part2_inference/ch07_confidence_intervals   # [PLANNED]
+      - file: notebooks/part2_inference/ch07_confidence_intervals   # [EXISTS]
         title: "Chapter 7 — Confidence Intervals and Clinical Significance"
 
   # ============================================================
@@ -99,7 +99,7 @@ parts:
       # ----------------------------------------------------------
       # Chapter 8 — Linear Regression
       # ----------------------------------------------------------
-      - file: notebooks/part3_modelling/ch08_linear_regression      # [PLANNED]
+      - file: notebooks/part3_modelling/ch08_linear_regression     # [EXISTS]
         title: "Chapter 8 — Linear Regression"
 
       # ----------------------------------------------------------
