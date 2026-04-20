@@ -1,0 +1,28 @@
+# Build output
+_build/
+*.doctrees/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Jupyter Book
+*.log
+jupyter_execute/
+
+# Data (keep CSVs, cache large files)
+vital_db/*.csv
+*_cache/*.parquet
+*.db
+
+# Temporary files
+*.tmp
+*.bak
+*~

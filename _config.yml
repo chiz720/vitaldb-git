@@ -1,0 +1,172 @@
+#==============================================================================
+# Quantitative Anesthesia — Jupyter Book Configuration
+# Targets: jupyter-book >= 0.15, sphinx >= 5.0
+#==============================================================================
+
+title        : "Quantitative Anesthesia: From Numbers to the Operating Room"
+author       : "Dr. Idris"
+copyright    : "2025"
+logo         : assets/logo.png          # place a 200×200 PNG here (or remove line)
+only_build_toc_files: true              # skip any .ipynb not listed in _toc.yml
+
+#------------------------------------------------------------------------------
+# Execution — notebooks are NOT re-run at build time by default.
+# Use 'cache' during development to re-run only changed notebooks.
+# Use 'off' for final publication builds (results already in .ipynb).
+#------------------------------------------------------------------------------
+execute:
+  execute_notebooks  : "off"            # off | auto | force | cache
+  cache              : ".jupyter_cache" # local cache directory
+  timeout            : 300              # seconds per cell before kernel is killed
+  run_in_temp        : false            # keep cwd = book root for data paths
+  allow_errors       : false            # set true to show errors inline (debugging)
+  stderr_output      : "show"           # show | remove | remove-warn | warn | error
+
+#------------------------------------------------------------------------------
+# Parse — MyST-Parser extensions
+# These unlock callout boxes, math, proof environments, and more.
+#------------------------------------------------------------------------------
+parse:
+  myst_enable_extensions:
+    - amsmath          # \begin{equation} ... \end{equation} blocks
+    - colon_fence      # ::: admonition shorthand (cleaner than ``` {note})
+    - deflist          # definition lists (term\n:  definition)
+    - dollarmath       # $inline$ and $$display$$ math
+    - fieldlist        # :param x: style field lists
+    - html_admonition  # <div class="admonition"> from raw HTML
+    - html_image       # <img> tags with figure captions
+    - linkify          # auto-link bare URLs
+    - replacements     # typographic replacements (-- → –, --- → —)
+    - smartquotes      # "curly quotes"
+    - substitution     # |substitution| definitions
+    - tasklist         # - [x] checkboxes
+
+  myst_url_schemes      : [mailto, http, https]
+  myst_dmath_allow_labels: true          # allow \label{} inside $$ blocks
+  myst_heading_anchors  : 3             # auto-anchor headings h1–h3
+
+#------------------------------------------------------------------------------
+# HTML output
+#------------------------------------------------------------------------------
+html:
+  favicon                  : assets/favicon.ico   # browser tab icon (optional)
+  use_edit_page_button     : false
+  use_repository_button    : true
+  use_issues_button        : true
+  use_multitoc_numbering   : true    # continuous chapter numbering across parts
+  analytics:
+    google_analytics_id    : ""      # add GA4 measurement ID if deploying publicly
+  home_page_in_navbar      : true
+  extra_navbar             : "Powered by <a href='https://jupyterbook.org'>Jupyter Book</a>"
+  extra_footer             : |
+    <p>
+      <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>
+        CC BY-NC-SA 4.0</a> &nbsp;|&nbsp;
+      Data: <a href='https://vitaldb.net'>VitalDB</a> (Seoul National University Hospital)
+    </p>
+  comments:
+    hypothesis: false     # set true to enable Hypothesis annotation overlay
+    utterances:
+      repo: ""            # e.g. "username/quantitative-anesthesia" for GitHub comments
+
+#------------------------------------------------------------------------------
+# Repository — enables "open on GitHub" and "suggest edit" buttons
+#------------------------------------------------------------------------------
+repository:
+  url          : https://github.com/idris-ai/quantitative-anesthesia  # update when repo exists
+  path_to_book : .
+  branch       : main
+
+#------------------------------------------------------------------------------
+# Launch buttons — one-click Binder / Colab / JupyterHub
+#------------------------------------------------------------------------------
+launch_buttons:
+  notebook_interface : "classic"     # classic | jupyterlab
+  binderhub_url      : "https://mybinder.org"
+  colab_url          : "https://colab.research.google.com"
+  thebe              : false         # live in-page execution (requires server)
+
+#------------------------------------------------------------------------------
+# Sphinx — underlying build engine configuration
+#------------------------------------------------------------------------------
+sphinx:
+  local_extensions:            # any custom Sphinx extensions in _ext/
+    # myext: _ext
+
+  extra_extensions:
+    - sphinx_proof             # {prf:theorem}, {prf:definition}, {prf:example} etc.
+    - sphinx_exercise          # {exercise} and {solution} directives
+    - sphinx_togglebutton      # collapsible content blocks
+    - sphinx.ext.intersphinx   # cross-references to external docs (numpy, scipy, etc.)
+    - sphinx.ext.viewcode      # "view source" links on Python API pages
+
+  config:
+    # ---- HTML theme tweaks ------------------------------------------------
+    html_theme              : "sphinx_book_theme"
+    html_theme_options:
+      show_toc_level        : 2         # depth of right-hand page TOC
+      navigation_with_keys  : true
+      toc_title             : "On this page"
+      use_sidenotes         : true      # margin notes with {margin} directive
+      show_navbar_depth     : 2
+
+    # ---- Mathjax (rendered LaTeX in browser) ------------------------------
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          # Common anesthesia/physiology shorthands
+          MAP    : "\\mathrm{MAP}"
+          CO     : "\\mathrm{CO}"
+          SVR    : "\\mathrm{SVR}"
+          SV     : "\\mathrm{SV}"
+          HR     : "\\mathrm{HR}"
+          DO2    : "\\mathrm{DO_2}"
+          VO2    : "\\mathrm{VO_2}"
+          FiO2   : "\\mathrm{FiO_2}"
+          PAO2   : "\\mathrm{P_AO_2}"
+          PaO2   : "\\mathrm{PaO_2}"
+          PaCO2  : "\\mathrm{PaCO_2}"
+          EtCO2  : "\\mathrm{EtCO_2}"
+          SaO2   : "\\mathrm{SaO_2}"
+          Emax   : "E_{\\max}"
+          EC50   : "\\mathrm{EC}_{50}"
+          Vd     : "V_d"
+          ke0    : "k_{e0}"
+
+    # ---- Intersphinx mappings (cross-reference external API docs) ---------
+    intersphinx_mapping:
+      python   : ["https://docs.python.org/3/", null]
+      numpy    : ["https://numpy.org/doc/stable/", null]
+      pandas   : ["https://pandas.pydata.org/docs/", null]
+      scipy    : ["https://docs.scipy.org/doc/scipy/", null]
+      sklearn  : ["https://scikit-learn.org/stable/", null]
+      lifelines: ["https://lifelines.readthedocs.io/en/latest/", null]
+
+    # ---- BibTeX bibliography -----------------------------------------------
+    bibtex_bibfiles:
+      - references.bib          # create this file with your .bib entries
+
+    # ---- Numfig: numbered figures, tables, code blocks --------------------
+    numfig: true
+    numfig_format:
+      figure : "Figure %s"
+      table  : "Table %s"
+      code-block: "Listing %s"
+
+    # ---- Code-cell visibility toggle ----------------------------------------
+    nb_code_prompt_show : "Show code ▶"
+    nb_code_prompt_hide : "Hide code ▼"
+
+    # ---- Suppress noisy Sphinx warnings -----------------------------------
+    suppress_warnings:
+      - "myst.header"
+      - "etoc.toctree"
+
+#------------------------------------------------------------------------------
+# BibTeX / citations (requires sphinxcontrib-bibtex)
+#------------------------------------------------------------------------------
+bibtex_bibfiles:
+  - references.bib
+
+bibtex_reference_style: author_year  # or 'label' for [1], [2] style

@@ -1,0 +1,247 @@
+#==============================================================================
+# Quantitative Anesthesia — Table of Contents
+# Format: jb-book (Jupyter Book >= 0.15)
+#
+# Legend:
+#   [EXISTS]  notebook already written and in repo
+#   [PLANNED] file to be created — listed for structure; build with
+#             `only_build_toc_files: true` in _config.yml so missing files
+#             do not break the build once stubs are created.
+#
+# Naming convention:
+#   Root-level notebooks  → referenced by filename only (no path prefix)
+#   New chapter notebooks → notebooks/partN_name/chNN_slug
+#   Appendices            → appendices/appendix_X_slug
+#==============================================================================
+
+format: jb-book
+root: intro          # intro.md — book landing page [PLANNED]
+
+parts:
+
+  # ============================================================
+  # PART I — FOUNDATIONS: LEARNING THE LANGUAGE OF DATA
+  # ============================================================
+  - caption: "Part I — Foundations: Learning the Language of Data"
+    numbered: true
+    chapters:
+
+      # ----------------------------------------------------------
+      # Chapter 1 — Why Quantitative Anesthesia?
+      # ----------------------------------------------------------
+      - file: notebooks/part1_foundations/ch01_why_quantitative    # [PLANNED]
+        title: "Chapter 1 — Why Quantitative Anesthesia?"
+        sections:
+          - file: vitaldb_analysis                                  # [EXISTS] VitalDB dataset overview & EDA
+            title: "1.1 · The VitalDB Dataset: Your Laboratory"
+          - file: asa_mortality                                      # [EXISTS] ASA class vs. mortality
+            title: "1.2 · ASA Classification and Mortality: A First Look"
+
+      # ----------------------------------------------------------
+      # Chapter 2 — Types of Variables
+      # ----------------------------------------------------------
+      - file: notebooks/part1_foundations/ch02_variable_types       # [PLANNED]
+        title: "Chapter 2 — Types of Variables"
+
+      # ----------------------------------------------------------
+      # Chapter 3 — Descriptive Statistics
+      # ----------------------------------------------------------
+      - file: notebooks/part1_foundations/ch03_descriptive_stats    # [EXISTS]
+        title: "Chapter 3 — Descriptive Statistics: Summarising Your Patients"
+        sections:
+          - file: ch03_cohort_descriptive                            # [EXISTS] Full descriptive analysis with plots and Table 1
+            title: "3.1 · Descriptive Analysis of the VitalDB Cohort"
+
+      # ----------------------------------------------------------
+      # Chapter 4 — Visualisation
+      # ----------------------------------------------------------
+      - file: notebooks/part1_foundations/ch04_visualisation        # [EXISTS]
+        title: "Chapter 4 — Visualisation: Seeing What the Numbers Mean"
+        sections:
+          - file: ch04_visualisation_exercise                        # [EXISTS] Correlation heatmap, scatter+LOWESS, violin vs boxplot
+            title: "4.1 · Visualisation Exercises: Correlations and Distributions"
+
+  # ============================================================
+  # PART II — INFERENCE: MAKING DECISIONS FROM DATA
+  # ============================================================
+  - caption: "Part II — Inference: Making Decisions from Data"
+    numbered: true
+    chapters:
+
+      # ----------------------------------------------------------
+      # Chapter 5 — Probability and Distributions
+      # ----------------------------------------------------------
+      - file: notebooks/part2_inference/ch05_probability            # [EXISTS]
+        title: "Chapter 5 — Probability and Distributions"
+        sections:
+          - file: ch05_probability_vitaldb                             # [EXISTS] Probability, distributions, CLT exercises
+            title: "5.1 · Probability and Distributions in the VitalDB Cohort"
+
+      # ----------------------------------------------------------
+      # Chapter 6 — Hypothesis Testing
+      # ----------------------------------------------------------
+      - file: notebooks/part2_inference/ch06_hypothesis_testing     # [PLANNED]
+        title: "Chapter 6 — Hypothesis Testing"
+
+      # ----------------------------------------------------------
+      # Chapter 7 — Confidence Intervals and Clinical Significance
+      # ----------------------------------------------------------
+      - file: notebooks/part2_inference/ch07_confidence_intervals   # [PLANNED]
+        title: "Chapter 7 — Confidence Intervals and Clinical Significance"
+
+  # ============================================================
+  # PART III — MODELLING: UNDERSTANDING RELATIONSHIPS
+  # ============================================================
+  - caption: "Part III — Modelling: Understanding Relationships"
+    numbered: true
+    chapters:
+
+      # ----------------------------------------------------------
+      # Chapter 8 — Linear Regression
+      # ----------------------------------------------------------
+      - file: notebooks/part3_modelling/ch08_linear_regression      # [PLANNED]
+        title: "Chapter 8 — Linear Regression"
+
+      # ----------------------------------------------------------
+      # Chapter 9 — Logistic Regression
+      # Worked examples: AKI prediction, transfusion, cardiac risk
+      # ----------------------------------------------------------
+      - file: notebooks/part3_modelling/ch09_logistic_regression    # [PLANNED]
+        title: "Chapter 9 — Logistic Regression"
+        sections:
+          - file: hemodynamics_analysis                              # [EXISTS] vasopressor/blood loss → AKI/mortality (AUC 0.78)
+            title: "9.1 · Haemodynamic Predictors of AKI and Mortality"
+          - file: art_aki_analysis                                   # [EXISTS] arterial line waveform features → postop AKI
+            title: "9.2 · Arterial Line Dynamics and Acute Kidney Injury"
+          - file: ci_aki                                             # [EXISTS] cardiac index threshold → AKI risk
+            title: "9.3 · Cardiac Index, Perfusion Pressure, and the Kidney"
+          - file: stemi_data_practice                                # [EXISTS] perioperative cardiac risk / STEMI
+            title: "9.4 · Perioperative Cardiac Risk: A Data-Driven Framework"
+
+      # ----------------------------------------------------------
+      # Chapter 10 — Survival Analysis
+      # ----------------------------------------------------------
+      - file: notebooks/part3_modelling/ch10_survival_analysis      # [PLANNED]
+        title: "Chapter 10 — Survival Analysis"
+
+  # ============================================================
+  # PART IV — PHYSIOLOGY MADE QUANTITATIVE
+  # ============================================================
+  - caption: "Part IV — Physiology Made Quantitative"
+    numbered: true
+    chapters:
+
+      # ----------------------------------------------------------
+      # Chapter 11 — Cardiovascular Physiology as a System of Equations
+      # Worked examples: DO2, CO, SVV, HRV, vasopressor PD
+      # ----------------------------------------------------------
+      - file: notebooks/part4_physiology/ch11_cardiovascular        # [PLANNED]
+        title: "Chapter 11 — Cardiovascular Physiology as a System of Equations"
+        sections:
+          - file: co_perfusion_analysis                              # [EXISTS] CO/CI dynamics, Fick principle, SVV, DO2
+            title: "11.1 · Cardiac Output, Oxygen Delivery, and the Fick Principle"
+          - file: bis_map_co_coupling                                # [EXISTS] BIS–MAP–CO temporal cross-correlation
+            title: "11.2 · The Anaesthetic Triad: BIS, MAP, and Cardiac Output"
+          - file: hrv_anaesthesia                                    # [EXISTS] HRV spectral analysis, sympathovagal balance
+            title: "11.3 · Heart Rate Variability and the Autonomic Nervous System"
+
+      # ----------------------------------------------------------
+      # Chapter 12 — Respiratory Physiology and Ventilator Mechanics
+      # ----------------------------------------------------------
+      - file: notebooks/part4_physiology/ch12_respiratory           # [PLANNED]
+        title: "Chapter 12 — Respiratory Physiology and Ventilator Mechanics"
+
+      # ----------------------------------------------------------
+      # Chapter 13 — Pharmacology Made Quantitative: PK/PD Modelling
+      # Worked example: propofol TCI → BIS Hill equation
+      # ----------------------------------------------------------
+      - file: notebooks/part4_physiology/ch13_pkpd                  # [PLANNED]
+        title: "Chapter 13 — Pharmacology Made Quantitative: PK/PD Modelling"
+        sections:
+          - file: ppf_bis_analysis                                   # [EXISTS] propofol dose–BIS relationship, TCI validation
+            title: "13.1 · Propofol PK/PD: Fitting the Sigmoid Emax Model to Real Data"
+
+      # ----------------------------------------------------------
+      # Chapter 14 — Depth of Anaesthesia: Signals from the Brain
+      # ----------------------------------------------------------
+      - file: notebooks/part4_physiology/ch14_depth_of_anaesthesia  # [PLANNED]
+        title: "Chapter 14 — Depth of Anaesthesia: Signals from the Brain"
+        sections:
+          - file: eeg_waveform_analysis                              # [EXISTS] EEG spectral analysis, burst suppression, band power
+            title: "14.1 · EEG Spectral Analysis During Anaesthesia"
+
+  # ============================================================
+  # PART V — ADVANCED DATA SCIENCE FOR THE OR
+  # ============================================================
+  - caption: "Part V — Advanced Data Science for the OR"
+    numbered: true
+    chapters:
+
+      # ----------------------------------------------------------
+      # Chapter 15 — Feature Engineering for Clinical Data
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch15_feature_engineering # [PLANNED]
+        title: "Chapter 15 — Feature Engineering for Clinical Data"
+
+      # ----------------------------------------------------------
+      # Chapter 16 — Machine Learning for Prediction
+      # Worked examples: hypotension prediction, ICU prediction, phenotyping
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch16_machine_learning    # [PLANNED]
+        title: "Chapter 16 — Machine Learning for Prediction"
+        sections:
+          - file: art_hypotension_prediction                         # [EXISTS] random forest / logistic regression: hypotension 5 min ahead
+            title: "16.1 · Predicting Intraoperative Hypotension: A Real-Time ML Model"
+          - file: intraop_icu_prediction                             # [EXISTS] predicting unplanned ICU admission from intraop data
+            title: "16.2 · Predicting Unplanned ICU Admission from Intraoperative Data"
+          - file: haemodynamic_phenotyping                          # [EXISTS] k-means clustering of MAP trajectories → 4 phenotypes
+            title: "16.3 · Unsupervised Haemodynamic Phenotyping"
+
+      # ----------------------------------------------------------
+      # Chapter 17 — Time Series Analysis
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch17_time_series         # [PLANNED]
+        title: "Chapter 17 — Time Series Analysis"
+
+      # ----------------------------------------------------------
+      # Chapter 18 — Signal Processing for Anaesthesiologists
+      # Worked examples: HRV (already in Ch 11), arrhythmia detection
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch18_signal_processing   # [PLANNED]
+        title: "Chapter 18 — Signal Processing for Anaesthesiologists"
+        sections:
+          - file: arryhthmia                                         # [EXISTS] ECG arrhythmia classification from physiological signals
+            title: "18.1 · Intraoperative Arrhythmia Detection from the ECG"
+
+      # ----------------------------------------------------------
+      # Chapter 19 — Causal Inference in Observational Data
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch19_causal_inference    # [PLANNED]
+        title: "Chapter 19 — Causal Inference in Observational Data"
+
+      # ----------------------------------------------------------
+      # Chapter 20 — Putting It All Together: A Full Clinical Data Science Workflow
+      # ----------------------------------------------------------
+      - file: notebooks/part5_data_science/ch20_full_workflow       # [PLANNED]
+        title: "Chapter 20 — A Full Clinical Data Science Workflow"
+
+  # ============================================================
+  # APPENDICES
+  # ============================================================
+  - caption: "Appendices"
+    chapters:
+
+      - file: appendices/appendix_a_setup                           # [PLANNED]
+        title: "Appendix A — Python Environment Setup"
+
+      - file: appendices/appendix_b_formulae                        # [PLANNED]
+        title: "Appendix B — Statistical and Physiological Formulae Reference"
+
+      - file: appendices/appendix_c_data_dictionary                 # [PLANNED]
+        title: "Appendix C — VitalDB Data Dictionary"
+
+      - file: appendices/appendix_d_datasets                        # [PLANNED]
+        title: "Appendix D — Accessing Supplementary Open-Source Datasets"
+
+      - file: appendices/appendix_e_glossary                        # [PLANNED]
+        title: "Appendix E — Glossary: Statistical Terms in Clinical Language"
