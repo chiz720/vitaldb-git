@@ -101,6 +101,9 @@ parts:
       # ----------------------------------------------------------
       - file: notebooks/part3_modelling/ch08_linear_regression     # [EXISTS]
         title: "Chapter 8 — Linear Regression"
+        sections:
+          - file: ch08_linear_regression_vitaldb              # [NEW] VitalDB examples with code
+            title: "8.1 · Linear Regression with VitalDB Data"
 
       # ----------------------------------------------------------
       # Chapter 9 — Logistic Regression
